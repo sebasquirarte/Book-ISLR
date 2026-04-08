@@ -2,7 +2,7 @@
 title: "ISLR-Chapter2"
 author: "Sebastian Quirarte"
 date: "2026-04-08"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
