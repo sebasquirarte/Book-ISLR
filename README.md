@@ -1,31 +1,27 @@
 
-## R Markdown
+# An Introduction to Statistical Learning
 
-This is an R Markdown document. Markdown is a simple formatting syntax
-for authoring HTML, PDF, and MS Word documents. For more details on
-using R Markdown see <http://rmarkdown.rstudio.com>.
+Labs and exercises for the book ‘An Introduction to Statistical
+Learning’ by Gareth James, Daniela Witten, Trevor Hastie, and Rob
+Tibshirani.
 
-When you click the **Knit** button a document will be generated that
-includes both content as well as the output of any embedded R code
-chunks within the document. You can embed an R code chunk like this:
+Full book for both R and python available
+[here](https://www.statlearning.com/).
 
-``` r
-summary(cars)
-```
+<img src="README_files/ISLR2-Cover.jpg" alt="" width="30%" />
 
-    ##      speed           dist       
-    ##  Min.   : 4.0   Min.   :  2.00  
-    ##  1st Qu.:12.0   1st Qu.: 26.00  
-    ##  Median :15.0   Median : 36.00  
-    ##  Mean   :15.4   Mean   : 42.98  
-    ##  3rd Qu.:19.0   3rd Qu.: 56.00  
-    ##  Max.   :25.0   Max.   :120.00
+## Contents
 
-## Including Plots
-
-You can also embed plots, for example:
-
-![](README_files/figure-gfm/pressure-1.png)<!-- -->
-
-Note that the `echo = FALSE` parameter was added to the code chunk to
-prevent printing of the R code that generated the plot.
+- 1 - Introduction
+- 2 - Statistical Learning
+- 3 - Linear Regression
+- 4 - Classification
+- 5 - Resampling Methods
+- 6 - Linear Model Selection and Regularization
+- 7 - Moving Beyond Linearity
+- 8 - Tree-Based Methods
+- 9 - Support Vector Machines
+- 10 - Deep Learning
+- 11 - Survival Analysis and Censored Data
+- 12 - Unsupervised Learning
+- 13 - Multiple Testing
