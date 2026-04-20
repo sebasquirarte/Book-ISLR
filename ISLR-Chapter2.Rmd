@@ -1,30 +1,210 @@
 ---
-title: "ISLR-Chapter2"
+title: "Chapter 2: Statistical Learning"
 author: "Sebastian Quirarte"
 date: "2026-04-08"
-output: github_document
+output: 
+  github_document: 
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Labs and exercises for the book 'An Introduction to Statistical Learning' by 
+Gareth James, Daniela Witten, Trevor Hastie, and Rob Tibshirani. Full book is
+available [here](https://www.statlearning.com/).
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+## Lab: Introduction to R
 
-```{r cars}
-summary(cars)
+### Basic commands
+
+```{r}
+# Create a vector of numbers 
+x <- c(1, 3, 2, 5)
+x
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+# Sum two vectors of the same length 
+x <- c(1, 6, 2)
+y <- c(1, 4, 3) 
+x + y
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+# View variables
+ls()
+# Delete variables 
+rm(x, y)
+ls()
+
+# Delete all variables at once
+rm(list = ls())
+```
+
+```{r}
+# Create a matrix
+x <- matrix(data = c(1, 2, 3, 4), nrow = 2, ncol = 2) # by column (default)
+x
+
+x <- matrix(data = c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = TRUE) # by row
+x
+```
+
+```{r}
+# sqrt and power can be applied to vectors and matrices
+sqrt(x)
+x^2
+```
+
+```{r}
+# Random normal variables
+x <- rnorm(50)
+y <- x + rnorm(50, mean = 50, sd = 0.1)
+# Correlation between variables
+cor(x, y)
+```
+
+```{r}
+# We can replicate results by setting a seed value
+set.seed(1303)
+rnorm(50)
+```
+
+```{r}
+set.seed(3)
+y <- rnorm(100)
+
+mean(y) # mean 
+var(y) # variance
+sqrt(var(y)) # SD
+sd(y) # SD
+```
+
+### Graphics
+
+```{r}
+x <- rnorm(100)
+y <- rnorm(100)
+plot(x, y)
+plot(x, y, xlab = "This is the x-axis",
+           ylab = "This is the y-axis",
+           main = "Plot of X vs Y")
+```
+
+```{r}
+# Sequence of numbers between a and b
+x <- seq(1, 10)
+x
+
+x <- 1:10 # same as seq(1, 10)
+x
+```
+
+```{r}
+# Contour plot to present 3D data
+y <- x
+f <- outer(x, y, function(x, y) cos(y) / (1 + x^2))
+contour(x, y, f)
+contour(x, y, f, nlevels = 45, add = T)
+fa <- (f - t(f)) / 2
+contour(x, y, fa, nlevels = 15)
+
+# image and persp can be used to view 3d plots
+image(x, y, fa)
+persp(x, y, fa)
+
+# Theta and phi adjust the camara angle
+persp(x, y, fa, theta = 30)
+persp(x, y, fa, theta = 30, phi = 40)
+```
+
+### Indexing Data
+
+```{r}
+# Data stored in matrix
+A <- matrix(1:16, 4, 4)
+A
+
+# Value at row 2, column 3
+A[2, 3]
+
+# Subsets of multiple rows and columns
+A[c(1, 3), c(2, 4)]
+A[1:3, 2:4]
+A[1:2, ]
+A[, 1:2]
+A[1, ] # R treats a single row or column as a vector
+A[-c(1,3), -c(1, 3, 4)] # Using a negative index indicates all except
+dim(A) # dimensions of matrix (row, col)
+```
+
+### Loading Data
+
+```{r}
+# The Auto dataset is loaded from the ISLR2 package
+library(ISLR2)
+Auto <- Auto
+head(Auto, header = T, na.string = '?')
+dim(Auto) # rows x columns
+names(Auto) # varible names
+```
+
+### Additional Graphical and Numerical Summaries
+
+```{r}
+plot(Auto$cylinders, Auto$mpg)
+attach(Auto) # load variables locally so they can be called directly by name
+plot(cylinders, mpg)
+
+# Converting from quantitive to categorical
+cylinders <- as.factor(cylinders)
+
+# Plotting a qualitative variable on the x-axis will produce boxplots
+plot(cylinders, mpg)
+
+# Histograms can be plotted with the hist() function
+hist(mpg)
+hist(mpg, col = 2, breaks = 15)
+
+# The pairs() function creates a scatterlot matrix
+pairs(Auto)
+
+plot(horsepower, mpg)
+
+# The summary() function produces a summary numerical summary of variables in a dataset
+summary(Auto)
+
+# We can also provide a summary of a single variable
+summary(mpg)
+```
+
+## Exercises 
+
+### Conceptual
+
+_**1. For each of parts (a) through (d), indicate whether we would generally
+expect the performance of a flexible statistical learning method to be
+better or worse than an inflexible method. Justify your answer.**_
+
+*a) The sample size n is extremely large, and the number of predictors
+p is small.*
+
+*b) The number of predictors p is extremely large, and the number
+of observations n is small.*
+
+*c) The relationship between the predictors and response is highly
+non-linear.*
+Flexible method
+
+*d) The variance of the error terms, i.e. σ2 = Var(ϵ), is extremely
+high.*
+
+2. Explain whether each scenario is a classification or regression problem,
+and indicate whether we are most interested in inference or prediction.
+Finally, provide n and p.
+
+
+

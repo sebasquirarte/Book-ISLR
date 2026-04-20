@@ -13,6 +13,7 @@ Labs and exercises for the book 'An Introduction to Statistical Learning' by
 Gareth James, Daniela Witten, Trevor Hastie, and Rob Tibshirani.
 
 Full book for both R and python available [here](https://www.statlearning.com/).
+Video course avaiable [here](https://www.youtube.com/playlist?list=PLoROMvodv4rOzrYsAxzQyHb8n_RWNuS1e)
 
 ```{r, echo=FALSE, out.width="30%"}
 knitr::include_graphics("README_files/ISLR2-Cover.jpg")
